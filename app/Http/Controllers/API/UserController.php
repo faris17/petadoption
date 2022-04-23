@@ -11,17 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
     public function login(Request $request)
     {
         try {
@@ -54,8 +43,7 @@ class UserController extends Controller
                     'message' => 'Something went wrong',
                     'error' => $error
                 ],
-                'Authentication Failed',
-                500
+                'Login Failed',
             );
         }
     }
@@ -90,7 +78,7 @@ class UserController extends Controller
                     'message' => 'Something went wrong',
                     'error' => $error
                 ],
-                'Authentication Failed',
+                'Registration Failed',
             );
         }
     }
@@ -107,7 +95,7 @@ class UserController extends Controller
 
             $user = Auth::user($user);
 
-            return $this->sendResponse($user, 'Successfull Register');
+            return $this->sendResponse($user, 'Successfull get user');
         } catch (Exception $error) {
             return $this->sendError(
                 [
@@ -119,27 +107,6 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-    }
 
     public function logout(Request $request)
     {
